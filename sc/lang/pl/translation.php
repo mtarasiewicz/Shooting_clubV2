@@ -32,6 +32,7 @@ return [
         'restore' => 'Przywróć',
         'participants' => 'Zawodnicy'
     ],
+    'logout' => "Wyloguj się",
     'yes' => 'Tak',
     'no' => 'Nie',
     'cancel' => 'Anuluj',
