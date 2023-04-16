@@ -20,7 +20,8 @@ class UsersTableView extends TableView
         'name',
         'email',
         'roles.name',
-        'created_at'
+        'created_at',
+        'clubName'
     ];
 
     protected $paginate = 5;
@@ -36,7 +37,8 @@ class UsersTableView extends TableView
             Header::title(__('users.attributes.name')),
             Header::title(__('users.attributes.email')),
             __('users.attributes.role'),
-            Header::title(__('users.attributes.created_at'))
+            Header::title(__('users.attributes.created_at')),
+            Header::title(__('users.attributes.clubName'))
         ];
     }
 
@@ -52,6 +54,7 @@ class UsersTableView extends TableView
             $model->email,
             $model->roles->implode('name', ', '),
             $model->created_at,
+            $model->clubName,
         ];
     }
     protected function actionsByRow()
