@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TournamentController;
 
@@ -48,5 +49,11 @@ Route::get('tournaments/{tournament}/participants', [TournamentController::class
 Route::resource('legend_items', LegendController::class)->only([
         'index','create','edit'
 ]);
+Route::get('logout', function ()
+{
+    auth()->logout();
+    Session()->flush();
 
+    return Redirect::to('/');
+})->name('logout');
 require __DIR__.'/auth.php';
