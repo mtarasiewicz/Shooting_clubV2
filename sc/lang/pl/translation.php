@@ -42,6 +42,7 @@ return [
     'back' => 'Wstecz',
     'enter' => 'Wprowadź wartość',
     'select' => 'Wybierz wartość',
+    'acc' => 'Twoje konto: ',
     'account' => [
         'manage_account' => 'Zarządzanie profilem',
         'profile' => 'Profil',
