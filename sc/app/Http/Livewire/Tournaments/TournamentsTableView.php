@@ -6,12 +6,18 @@ use App\Models\Tournament;
 use WireUi\Traits\Actions;
 use LaravelViews\Views\TableView;
 use App\Http\Livewire\Tournaments\Actions\EditTournamentAction;
+use App\Http\Livewire\Tournaments\Actions\RestoreTournamentAction;
 use App\Http\Livewire\Tournaments\Actions\ViewParticipantsAction;
 use App\Http\Livewire\Tournaments\Actions\SoftDeleteTournamentAction;
+use App\Http\Livewire\Traits\Restore;
+use App\Http\Livewire\Traits\SoftDelete;
+use Illuminate\Database\Eloquent\Model;
 
 class TournamentsTableView extends TableView
 {
     use Actions;
+    use SoftDelete;
+    use Restore;
     /**
      * Sets a model class to get the initial data
      */
@@ -62,20 +68,34 @@ class TournamentsTableView extends TableView
         return [
             new EditTournamentAction('tournaments.edit', __('translation.actions.edit')),
             new SoftDeleteTournamentAction('tournaments.delete', __('translation.actions.delete')),
+            new RestoreTournamentAction(),
             new ViewParticipantsAction('participants', __('translation.actions.participants'))
         ];
     }
 
-    public function softDelete(int $id)
+    protected function softDeleteNotificationDescription(Model $model)
     {
-        dd($id);
-        // $tournament = Tournament::find($id);
-        // $tournament -> delete();
-        // $this->notification()->success(
-        //     $title = __('translation.messages.success.destroy_title'),
-        //     $description = __('tournaments.messages.success.destroy',[
-        //         'name'=>$tournament->name,
-        //     ])
-        // );
+        return __('tournemantes.messages.success.destroy',[
+            'name'=>$model
+        ]);
     }
+
+    protected function restoreNotificationDescription(Model $model)
+    {
+        return __('tournaments.messages.success.restore',[
+            'name'=>$model
+        ]);
+    }
+    // public function softDelete(int $id)
+    // {
+    //     dd($id);
+    //     // $tournament = Tournament::find($id);
+    //     // $tournament -> delete();
+    //     // $this->notification()->success(
+    //     //     $title = __('translation.messages.success.destroy_title'),
+    //     //     $description = __('tournaments.messages.success.destroy',[
+    //     //         'name'=>$tournament->name,
+    //     //     ])
+    //     // );
+    // }
 }
