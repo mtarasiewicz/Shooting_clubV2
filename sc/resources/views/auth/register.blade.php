@@ -9,6 +9,11 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+        <div>
+            <x-input-label for="clubName" :value="__('clubName')" />
+            <x-text-input id="clubName" class="block mt-1 w-full" type="text" name="clubName" :value="old('clubName')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('clubName')" class="mt-2" />
+        </div>
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />

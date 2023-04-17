@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\LegendController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TournamentController;
 
@@ -42,13 +43,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 Route::get('tournaments/{tournament}/participants', [TournamentController::class, 'participants'])->name('participants');
-    Route::get('tournaments/{tournament}/participants/register/{participant}', [TournamentController::class, 'registerParticipant'])->name('registerParticipant');
-    Route::get('tournaments/{tournament}/participants/unregister/{participant}', [TournamentController::class, 'unregisterParticipant'])->name('unregisterParticipant');
+Route::get('tournaments/{tournament}/participants/register/{participant}', [TournamentController::class, 'registerParticipant'])->name('registerParticipant');
+Route::get('tournaments/{tournament}/participants/unregister/{participant}', [TournamentController::class, 'unregisterParticipant'])->name('unregisterParticipant');
 
 Route::resource('legend_items', LegendController::class)->only([
         'index','create','edit'
 ]);
+
 Route::get('logout', function ()
 {
     auth()->logout();

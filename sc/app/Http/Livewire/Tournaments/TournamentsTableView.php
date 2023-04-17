@@ -11,7 +11,6 @@ use App\Http\Livewire\Tournaments\Actions\ViewParticipantsAction;
 use App\Http\Livewire\Tournaments\Actions\SoftDeleteTournamentAction;
 use App\Http\Livewire\Traits\Restore;
 use App\Http\Livewire\Traits\SoftDelete;
-use Illuminate\Database\Eloquent\Model;
 
 class TournamentsTableView extends TableView
 {
@@ -67,8 +66,7 @@ class TournamentsTableView extends TableView
     {
         return [
             new EditTournamentAction('tournaments.edit', __('translation.actions.edit')),
-            new SoftDeleteTournamentAction('tournaments.delete', __('translation.actions.delete')),
-            new RestoreTournamentAction(),
+            new SoftDeleteTournamentAction(),
             new ViewParticipantsAction('participants', __('translation.actions.participants'))
         ];
     }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Tournaments\Actions;
 
-use LaravelViews\Views\View;
 use App\Http\Livewire\Actions\SoftDeleteAction;
-use Illuminate\Database\Eloquent\Model;
+use LaravelViews\Views\View;
+use LaravelViews\Actions\Action;
 
 class SoftDeleteTournamentAction extends SoftDeleteAction
 {
