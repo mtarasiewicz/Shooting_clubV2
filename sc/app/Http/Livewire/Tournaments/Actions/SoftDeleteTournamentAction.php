@@ -2,11 +2,10 @@
 
 namespace App\Http\Livewire\Tournaments\Actions;
 
+use App\Http\Livewire\Actions\SoftDeleteAction;
 use LaravelViews\Views\View;
-use LaravelViews\Actions\Action;
 
-
-class SoftDeleteTournamentAction extends Action
+class SoftDeleteTournamentAction extends SoftDeleteAction
 {
     public $title = '';
     public $icon = 'trash';

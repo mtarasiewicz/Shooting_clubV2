@@ -8,10 +8,14 @@ use LaravelViews\Views\TableView;
 use App\Http\Livewire\Tournaments\Actions\EditTournamentAction;
 use App\Http\Livewire\Tournaments\Actions\ViewParticipantsAction;
 use App\Http\Livewire\Tournaments\Actions\SoftDeleteTournamentAction;
+use App\Http\Livewire\Traits\Restore;
+use App\Http\Livewire\Traits\SoftDelete;
 
 class TournamentsTableView extends TableView
 {
     use Actions;
+    use SoftDelete;
+    use Restore;
     /**
      * Sets a model class to get the initial data
      */
@@ -61,7 +65,7 @@ class TournamentsTableView extends TableView
     {
         return [
             new EditTournamentAction('tournaments.edit', __('translation.actions.edit')),
-            new SoftDeleteTournamentAction('tournaments.delete', __('translation.actions.delete')),
+            new SoftDeleteTournamentAction(),
             new ViewParticipantsAction('participants', __('translation.actions.participants'))
         ];
     }
