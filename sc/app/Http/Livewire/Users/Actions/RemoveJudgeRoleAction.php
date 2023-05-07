@@ -21,7 +21,7 @@ class RemoveJudgeRoleAction extends Action
     public function handle($model, View $view)
     {
         $model->removeRole(config('auth.roles.judge'));
-        $this->success(__('users.messages.successes.admin_role_assigned'));
+        $this->success(__('users.messages.successes.judge_role_removed'));
 
     }
 

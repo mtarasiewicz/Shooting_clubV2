@@ -7,18 +7,23 @@ return[
         'created_at' => 'Utworzono',
         'profile' => 'Mój profil',
         'clubName' => 'Klub',
+        'verified?' => 'Weryfikacja',
     ],
     'action' => [
         'assign_admin_role' => 'Ustaw role administratora',
         'remove_admin_role' => 'Odbierz role administratora',
         'assign_judge_role' => 'Ustaw role sędziego',
         'remove_judge_role' => 'Odbierz role sędziego',
+        'verify_user' => 'Zweryfikuj użytkownika',
         
     ],
     'messages' => [
         'successes' => [
-        'admin_role_assigned' => 'Ustawiono role administratora dla :user',
-        'admin_role_removed' => 'Odebrano role administratora :user',
+        'admin_role_assigned' => 'Ustawiono role administratora',
+        'admin_role_removed' => 'Odebrano role administratora',
+        'judge_role_assigned' => 'Ustawiono role sędziego',
+        'judge_role_removed' => 'Odebrano role sędziego',
+        'verify' => 'Zweryfikowano użytkownika'
         ],
         'errors' => [
             'error' => 'Niepowodzenie!',

@@ -9,6 +9,9 @@ use App\Http\Livewire\Users\Actions\AssignAdminRoleAction;
 use App\Http\Livewire\Users\Actions\AssignJudgeRoleAction;
 use App\Http\Livewire\Users\Actions\RemoveAdminRoleAction;
 use App\Http\Livewire\Users\Actions\RemoveJudgeRoleAction;
+use App\Http\Livewire\Users\Actions\UnverifyUserAction;
+use App\Http\Livewire\Users\Actions\VerifyUserAction;
+use LaravelViews\Facades\UI;
 
 class UsersTableView extends TableView
 {
@@ -38,7 +41,8 @@ class UsersTableView extends TableView
             Header::title(__('users.attributes.email')),
             __('users.attributes.role'),
             Header::title(__('users.attributes.created_at')),
-            Header::title(__('users.attributes.clubName'))
+            Header::title(__('users.attributes.clubName')),
+            Header::title(__('users.attributes.verified?'))
         ];
     }
 
@@ -54,7 +58,8 @@ class UsersTableView extends TableView
             $model->email,
             $model->roles->implode('name', ', '),
             $model->created_at,
-            $model->clubName,
+            $model->verified ? UI::badge($model->clubName) : $model->clubName,
+            $model->verified ? UI::icon('check', 'success') : UI::icon('slash', 'danger'),
         ];
     }
     protected function actionsByRow()
@@ -64,6 +69,8 @@ class UsersTableView extends TableView
             new AssignJudgeRoleAction,
             new RemoveAdminRoleAction,
             new RemoveJudgeRoleAction,
+            new VerifyUserAction,
+            new UnverifyUserAction,
         ];
     }
 }

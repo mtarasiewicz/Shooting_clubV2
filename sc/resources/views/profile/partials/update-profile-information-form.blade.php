@@ -1,4 +1,5 @@
 <section>
+    
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Profile Information') }}
@@ -8,11 +9,12 @@
             {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>
+    
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
-
+    
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
@@ -22,12 +24,23 @@
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
+        
         <div>
             <x-input-label for="clubName" :value="__('clubName')" />
             <x-text-input id="clubName" name="clubName" type="text" class="mt-1 block w-full" :value="old('clubName', $user->clubName)" required autofocus autocomplete="clubName" />
             <x-input-error class="mt-2" :messages="$errors->get('clubName')" />
         </div>
-
+        @if (!$user->verified)
+        <div role="alert">
+            <div class="bg-orange-500 text-white font-bold rounded-t px-4 py-2">
+              Klub niezweryfikowany!
+            </div>
+            <div class="border border-t-0 border-orange-400 rounded-b bg-red-100 px-4 py-3 text-orange-700">
+              <p>Administrator musi zweryfikować twój klub abyś mógł brać udział w zawodach, prosimy o cierpliwość.</p>
+            </div>
+          </div>
+        <div> 
+        @endif
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
