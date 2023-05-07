@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\Tournaments\Actions;
 
-use App\Http\Livewire\Actions\SoftDeleteAction;
 use LaravelViews\Views\View;
 use LaravelViews\Actions\Action;
+use Illuminate\Database\Eloquent\Model;
+use App\Http\Livewire\Actions\SoftDeleteAction;
 
 class SoftDeleteTournamentAction extends SoftDeleteAction
 {
@@ -45,7 +46,7 @@ class SoftDeleteTournamentAction extends SoftDeleteAction
         return __('tournaments.dialogs.soft_delete.title');
     }
 
-    protected function dialogDescription(Model $model): string
+    protected function dialogDescription(Model $model): String
     {
         return __('tournaments.dialogs.soft_delete.description',[
             'name'=>$model
