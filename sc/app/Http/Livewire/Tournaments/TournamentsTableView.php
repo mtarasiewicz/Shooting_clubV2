@@ -5,12 +5,14 @@ namespace App\Http\Livewire\Tournaments;
 use App\Models\Tournament;
 use WireUi\Traits\Actions;
 use LaravelViews\Views\TableView;
-use App\Http\Livewire\Tournaments\Actions\EditTournamentAction;
-use App\Http\Livewire\Tournaments\Actions\RestoreTournamentAction;
-use App\Http\Livewire\Tournaments\Actions\ViewParticipantsAction;
-use App\Http\Livewire\Tournaments\Actions\SoftDeleteTournamentAction;
 use App\Http\Livewire\Traits\Restore;
+use Illuminate\Database\Eloquent\Model;
 use App\Http\Livewire\Traits\SoftDelete;
+use Illuminate\Database\Eloquent\Builder;
+use App\Http\Livewire\Tournaments\Actions\EditTournamentAction;
+use App\Http\Livewire\Tournaments\Actions\ViewParticipantsAction;
+use App\Http\Livewire\Tournaments\Actions\RestoreTournamentAction;
+use App\Http\Livewire\Tournaments\Actions\SoftDeleteTournamentAction;
 
 class TournamentsTableView extends TableView
 {
@@ -29,6 +31,11 @@ class TournamentsTableView extends TableView
         'competitions',
         'description'
     ];
+
+    public function repository(): Builder
+    {
+        return Tournament::query()->withTrashed();
+    }
 
     /**
      * Sets the headers of the table as you want to be displayed
@@ -67,33 +74,23 @@ class TournamentsTableView extends TableView
         return [
             new EditTournamentAction('tournaments.edit', __('translation.actions.edit')),
             new SoftDeleteTournamentAction(),
+            new RestoreTournamentAction(),
             new ViewParticipantsAction('participants', __('translation.actions.participants'))
         ];
     }
 
     protected function softDeleteNotificationDescription(Model $model)
     {
-        return __('tournemantes.messages.success.destroy',[
+        return __('tournaments.messages.successes.destroy_title',[
             'name'=>$model
         ]);
     }
 
     protected function restoreNotificationDescription(Model $model)
     {
-        return __('tournaments.messages.success.restore',[
+        return __('tournaments.messages.successes.restore',[
             'name'=>$model
         ]);
     }
-    // public function softDelete(int $id)
-    // {
-    //     dd($id);
-    //     // $tournament = Tournament::find($id);
-    //     // $tournament -> delete();
-    //     // $this->notification()->success(
-    //     //     $title = __('translation.messages.success.destroy_title'),
-    //     //     $description = __('tournaments.messages.success.destroy',[
-    //     //         'name'=>$tournament->name,
-    //     //     ])
-    //     // );
-    // }
+    
 }

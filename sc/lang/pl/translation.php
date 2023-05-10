@@ -12,18 +12,18 @@ return [
             'updated_title' => 'Zaktualizowano',
             'destroy_title' => 'Usunięto',
             'restore_title' => 'Przywrócono',
-            'destroy_description' => 'Usunięto :model',
-            'restore_description' => 'Przywrócono :model',
+            'destroy_description' => 'Usuwanie powiodło się',
+            'restore_description' => 'Przywracanie powiodło się',
         ]
     ],
     'dialogs' => [
         'soft_delete' => [
             'title' => 'Usuwanie',
-            'description' => 'Czy na pewno usunąć :model?',
+            'description' => 'Czy na pewno usunąć?',
         ],
         'restore' => [
             'title' => 'Przywracanie',
-            'description' => 'Czy na pewno przywrócić :model?',
+            'description' => 'Czy na pewno przywrócić?',
         ],
     ],
     'actions' => [
@@ -80,6 +80,7 @@ return [
         'log-viewer' => 'Logi',
         'users' => 'Użytkownicy',
         'tournaments' => 'Zawody',
+        'legends' => 'Legenda',
         'participants' => 'Zawodnicy'
     ],
 ];

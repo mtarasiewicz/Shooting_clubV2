@@ -36,10 +36,10 @@ class TournamentForm extends Component
                 'required',
                 'string',
             ],
-            // 'tournament.participants'=>[
-            //     'required',
-            //     'string',
-            // ],
+            'tournament.participants'=>[
+                'required',
+                'string',
+            ],
             'tournament.description'=>[
                 'required',
                 'string',
@@ -53,7 +53,7 @@ class TournamentForm extends Component
             'date'=> Str::lower(__('tournaments.attributes.date')),
             'venue'=> Str::lower(__('tournaments.attributes.venue')),
             'competitions'=> Str::lower(__('tournaments.attributes.competitions')),
-            //'participants'=> Str::lower(__('tournaments.attributes.participants')),
+            'participants'=> Str::lower(__('tournaments.attributes.participants')),
             'description'=> Str::lower(__('tournaments.attributes.description')),
         ];
     }
@@ -72,14 +72,6 @@ class TournamentForm extends Component
     }
     public function save()
     {
-        // if($this->editMode) {
-        //     $this->authorize('update',$this->tournament);
-        // } else {
-        //     $this->authorize('create',Tournament::class);
-        // }
-        // dd($this->tournament);
-        // $this->validate();
-        //dd('save');
         $this->validate();
         $this->tournament->save();
         $this->notification()->success(
@@ -87,8 +79,8 @@ class TournamentForm extends Component
             ? __('translation.messages.successes.updated_title')
             : __('translation.messages.successes.stored_title'),
             $description = $this->editMode
-            ? __('tournaments.messages.success.updated',['name' => $this->tournament->name])
-            : __('tournaments.messages.success.stored',['name' => $this->tournament->name])
+            ? __('tournaments.messages.successes.updated',['name' => $this->tournament->name])
+            : __('tournaments.messages.successes.stored',['name' => $this->tournament->name])
         );
         $this->editMode = true;
     }

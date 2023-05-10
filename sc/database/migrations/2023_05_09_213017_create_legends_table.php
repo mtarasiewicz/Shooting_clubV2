@@ -8,12 +8,10 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('legend_items', function (Blueprint $table) {
+        Schema::create('legends', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
             $table->string('shortcut', 2);
@@ -24,11 +22,9 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('legend_items');
+        Schema::dropIfExists('legends');
     }
 };

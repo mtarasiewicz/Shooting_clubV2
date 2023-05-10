@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\LegendItems\Actions;
+namespace App\Http\Livewire\Legends\Actions;
 
 use LaravelViews\Views\View;
 use LaravelViews\Actions\RedirectAction;
@@ -14,6 +14,6 @@ class EditLegendAction extends RedirectAction
 
     public function renderIf($model, View $view)
     {
-        return $model;
+        return $model->deleted_at === null;
     }
 }

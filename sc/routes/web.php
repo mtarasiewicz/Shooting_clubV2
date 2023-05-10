@@ -48,8 +48,8 @@ Route::get('tournaments/{tournament}/participants', [TournamentController::class
 Route::get('tournaments/{tournament}/participants/register/{participant}', [TournamentController::class, 'registerParticipant'])->name('registerParticipant');
 Route::get('tournaments/{tournament}/participants/unregister/{participant}', [TournamentController::class, 'unregisterParticipant'])->name('unregisterParticipant');
 
-Route::resource('legend_items', LegendController::class)->only([
-        'index','create','edit'
+Route::resource('legends', LegendController::class)->only([
+        'index', 'create', 'edit'
 ]);
 
 Route::get('logout', function ()

@@ -8,12 +8,12 @@ trait Restore
 {
     protected function restoreNotificationTitle()
     {
-        return __('translation.messages.success.restore_title');
+        return __('translation.messages.successes.restore_title');
     }
 
     protected function restoreNotificationDescription(Model $model)
     {
-        return __('translation.messages.success.restore_desc',[
+        return __('translation.messages.successes.restore_desc',[
             'model' => $model
         ]);
     }

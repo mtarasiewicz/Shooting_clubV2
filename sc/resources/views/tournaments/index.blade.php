@@ -14,10 +14,10 @@
                 </div>
                 
                 <h2 style="margin-top:50px; margin-left:12px;">Legenda</h2>
-                <livewire:legenditems.legenditems-table-view />
+                <livewire:legends.legends-table-view />
                 <div class="grid justify-items-stretch pt-2 pr-2">
                     <x-button primary label="{{ __('Dodaj Pozycję Legendy')}}" 
-                    href="{{ route('legend_items.create')}}" class="justify-self-end"  />
+                    href="{{ route('legends.create')}}" class="justify-self-end"  />
                 
                 </div>
             </div>

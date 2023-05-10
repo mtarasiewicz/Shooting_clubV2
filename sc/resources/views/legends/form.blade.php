@@ -1,16 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('translation.navigation.tournaments') }}
+            {{ __('translation.navigation.legends') }}
         </h2>
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-xl sm:rounded-lg">
-                @if (isset($legend_item))
-                    <livewire:legends.legend-form :legend_item="$legend_item" :editMode="true"/>
+                @if (isset($legend))
+                    <livewire:legends.legend-form :legend="$legend" :editMode="true"/>
                 @else
-                    <livewire:legends.legend-form :editMode="false"/>
+                    <livewire:legends.legend-form :editMode="false" />
                 @endif
             </div>
         </div>

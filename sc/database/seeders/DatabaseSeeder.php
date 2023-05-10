@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use App\Models\User;
 use App\Models\Tournament;
 use Illuminate\Database\Seeder;
@@ -26,7 +27,7 @@ class DatabaseSeeder extends Seeder
         });
 
         $this->call(TournamentSeeder::class);
-        $this->call(LegendItemSeeder::class);
+        $this->call(LegendSeeder::class);
 
         // filter out admin, judge and member
         $users = User::all()->filter(function($item)

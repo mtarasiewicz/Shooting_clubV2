@@ -8,12 +8,12 @@ trait SoftDelete
 {
     protected function softDeleteNotificationTitle()
     {
-        return __('translation.messages.success.destroy_title');
+        return __('translation.messages.successes.destroy_title');
     }
 
     protected function softDeleteNotificationDescription(Model $model)
     {
-        return __('translation.messages.success.destroy_desc',[
+        return __('translation.messages.successes.destroy_desc',[
             'model' => $model
         ]);
     }

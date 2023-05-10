@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Legends;
 
+use App\Models\Legend;
 use Livewire\Component;
-use App\Models\LegendItem;
 use WireUi\Traits\Actions;
 use Illuminate\Support\Str;
 
@@ -11,26 +11,26 @@ class LegendForm extends Component
 {
     use Actions;
 
-    public LegendItem $legend_item;
+    public Legend $legend;
     public Bool $editMode;
 
     public function rules()
     {
         return[
-            'legend_item.name' => [
+            'legend.name' => [
                 'required',
                 'string',
                 'min:2',
-                'unique:legend_items,name' . 
-                    ($this->editMode ? (',' . $this->legend_item->id) : '')
+                'unique:legends,name' . 
+                    ($this->editMode ? (',' . $this->legend->id) : '')
             ],
 
-            'legend_item.shortcut' => [
+            'legend.shortcut' => [
                 'required',
                 'string',
-                'min:2',
-                'unique:legend_items,shortcut' . 
-                    ($this->editMode ? (',' . $this->legend_item->id) : '')
+                'min:1',
+                'unique:legends,shortcut' . 
+                    ($this->editMode ? (',' . $this->legend->id) : '')
             ],
 
             
@@ -40,13 +40,14 @@ class LegendForm extends Component
     public function validationAttributes()
     {
         return [
-            'name' => Str::lower(__('legend_item.attributes.name'))
+            'name' => Str::lower(__('legend.attributes.name')),
+            'shortcut' => Str::lower(__('legend.attributes.shortcut'))
         ];
     }
 
-    public function mount(LegendItem $legend_item, Bool $editMode)
+    public function mount(Legend $legend, Bool $editMode)
     {
-        $this->legend_item = $legend_item;
+        $this->legend = $legend;
         $this->editMode = $editMode;
     }
 
@@ -63,14 +64,15 @@ class LegendForm extends Component
 
         sleep(1);
         $this->validate();
-        $this->legend_item->save();
+        $this->legend->save();
         $this->notification()->success(
             $title = $this->editMode
-                ? __('Zapisano zmiany')
-                : __(' '),
+            ? __('translation.messages.successes.updated_title')
+            : __('translation.messages.successes.stored_title'),
             $description = $this->editMode
-                ? __(' ',['name' => $this->legend_item->name])
-                : __(' ',['name' => $this->legend_item->name])
+                ? __('translation.messages.successes.updated',['name' => $this->legend->name])
+                : __('translation.messages.successes.stored',['name' => $this->legend->name])
+                
         );
         $this->editMode = true;
 
