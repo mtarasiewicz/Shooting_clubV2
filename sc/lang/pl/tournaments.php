@@ -23,6 +23,7 @@ return [
         'successes' => [
             'destroy_title' => 'Pomyslnie usunieto',
             'restore' => 'Przywracanie pozycji powiodło się',
+            'updated' => 'Zmiany zostały zapisane',
             
         ],
     ],
