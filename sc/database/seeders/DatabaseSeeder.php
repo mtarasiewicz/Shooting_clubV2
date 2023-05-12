@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Competition;
 use App\Models\User;
 use App\Models\Tournament;
 use Illuminate\Database\Seeder;
@@ -26,8 +27,18 @@ class DatabaseSeeder extends Seeder
             $user->assignRole(Role::findByName(config('auth.roles.member')));
         });
 
+        $this->call(CompetitionSeeder::class);
         $this->call(TournamentSeeder::class);
         $this->call(LegendSeeder::class);
+
+        $competitions = Competition::all();
+
+        // randomly attach competitions to tournaments
+        Tournament::all()->each(function ($tournament) use ($competitions) {
+            $tournament->competitions()->attach(
+                $competitions->random(rand(1, 4))->pluck('id')->toArray()
+            );
+        });
 
         // filter out admin, judge and member
         $users = User::all()->filter(function($item)

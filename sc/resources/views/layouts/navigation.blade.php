@@ -23,6 +23,10 @@
                         {{ __('translation.navigation.tournaments') }}
                     </x-nav-link>
                     @endcan
+
+                    <x-nav-link href="{{ route('competitions.index') }}" :active="request()->routeIs('competitions.index')">
+                        {{ __('translation.navigation.competitions') }}
+                    </x-nav-link>
                 </div>
             </div>
             

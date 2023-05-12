@@ -30,7 +30,8 @@ return [
         'edit' => 'Edytuj',
         'destroy' => 'Usuń',
         'restore' => 'Przywróć',
-        'participants' => 'Zawodnicy'
+        'participants' => 'Zawodnicy',
+        'competitions' => 'Konkurencje'
     ],
     'logout' => "Wyloguj się",
     'yes' => 'Tak',
@@ -81,6 +82,7 @@ return [
         'users' => 'Użytkownicy',
         'tournaments' => 'Zawody',
         'legends' => 'Legenda',
-        'participants' => 'Zawodnicy'
+        'participants' => 'Zawodnicy',
+        'competitions' => 'Konkurencje',
     ],
 ];

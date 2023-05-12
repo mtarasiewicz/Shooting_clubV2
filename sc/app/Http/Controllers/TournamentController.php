@@ -32,6 +32,13 @@ class TournamentController extends Controller
             ]);
     }
 
+    public function competitions(Tournament $tournament)
+    {
+        return view('tournaments.competitions', [
+            'tournament' => $tournament
+        ]);
+    }
+
     public function participants(Tournament $tournament)
     {
         return view('tournaments.participants', [
