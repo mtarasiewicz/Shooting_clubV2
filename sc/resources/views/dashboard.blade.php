@@ -24,27 +24,7 @@
     <script src="jsfile/dashboardScript.js" defer></script>  
 </head>
   <body>
-    <h1>Pure <span id="css">Css</span> Carousel</h1>
-    <div class="carousel-wrapper">
-      <span id="item-1"></span>
-      <span id="item-2"></span>
-      <span id="item-3"></span>
-      <div class="carousel-item item-1">
-        <a href="#item-3" class="arrow-prev arrow"></a>
-        <a href="#item-2" class="arrow-next arrow"></a>
-      </div>
-  
-      <div class="carousel-item item-2">
-        <a href="#item-1" class="arrow-prev arrow"></a>
-        <a href="#item-3" class="arrow-next arrow"></a>
-      </div>
-  
-      <div class="carousel-item item-3">
-        <a href="#item-2" class="arrow-prev arrow"></a>
-        <a href="#item-1" class="arrow-next arrow"></a>
-      </div>
-  
-    </div>
+
 
     <div class="heading">
         <h1>O nas</h1>
