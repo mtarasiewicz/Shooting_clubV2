@@ -4,12 +4,11 @@ namespace App\Policies;
 
 use App\Models\Legend;
 use App\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class LegendPolicy
 {
-    use HandlesAuthorization;
-
+    use AuthorizesRequests;
     /**
      * Determine whether the user can view any models.
      *
@@ -30,7 +29,7 @@ class LegendPolicy
      */
     public function view(User $user, Legend $legend)
     {
-        //
+        return $user->can('legends.index');
     }
 
     /**
@@ -39,7 +38,7 @@ class LegendPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user, Legend $legend)
+    public function create(User $user)
     {
         return $user->can('legends.manage');
     }

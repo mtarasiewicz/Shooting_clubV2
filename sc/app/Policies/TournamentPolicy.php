@@ -39,7 +39,7 @@ class TournamentPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user, Tournament $tournament)
+    public function create(User $user)
     {
         return $user->can('tournaments.manage');
     }

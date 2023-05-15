@@ -18,6 +18,7 @@ class TournamentController extends Controller
 
     public function create()
     {
+        $this->authorize('create', Tournament::class);
         return view(
             'tournaments.form'
         );
@@ -25,6 +26,7 @@ class TournamentController extends Controller
 
     public function edit(Tournament $tournament)
     {
+        $this->authorize('update', $tournament);
         return view(
             'tournaments.form',
             [

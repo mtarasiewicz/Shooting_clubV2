@@ -12,7 +12,7 @@ class LegendController extends Controller
      */
     public function index()
     {
-        // $this->authorize('viewAny', Legend::class); 
+        $this->authorize('viewAny', Legend::class); 
         return view(
             'legends.index',
             );
@@ -23,6 +23,7 @@ class LegendController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Legend::class);
         return view(
             'legends.form',
             );
@@ -50,6 +51,7 @@ class LegendController extends Controller
 
     public function edit(Legend $legend)
     {
+        $this->authorize('update', $legend);
         return view(
             'legends.form',
             [

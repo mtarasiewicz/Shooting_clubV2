@@ -24,6 +24,7 @@ return [
             'destroy_title' => 'Pomyslnie usunieto',
             'restore' => 'Przywracanie pozycji powiodło się',
             'updated' => 'Zmiany zostały zapisane',
+            'stored' => 'Utworzono nową pozycję zawodów'
             
         ],
     ],
