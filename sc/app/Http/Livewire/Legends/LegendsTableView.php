@@ -33,7 +33,12 @@ class LegendsTableView extends TableView
 
     public function repository(): Builder
     {
-        return Legend::query()->withTrashed();
+        $query = Legend::query();
+        if(request()->user()->can('create', Legend::class))
+        {
+            $query->withTrashed();
+        }
+        return $query;
     }
 
     /**

@@ -35,7 +35,14 @@ class TournamentsTableView extends TableView
 
     public function repository(): Builder
     {
-        return Tournament::query()->withTrashed();
+        {
+            $query = Tournament::query();
+            if(request()->user()->can('create', Tournament::class))
+            {
+                $query->withTrashed();
+            }
+            return $query;
+        }
     }
 
     /**
