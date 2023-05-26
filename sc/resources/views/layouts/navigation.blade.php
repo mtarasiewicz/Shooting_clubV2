@@ -24,9 +24,11 @@
                     </x-nav-link>
                     @endcan
 
+                    @can('competitions.index')
                     <x-nav-link href="{{ route('competitions.index') }}" :active="request()->routeIs('competitions.index')">
                         {{ __('translation.navigation.competitions') }}
                     </x-nav-link>
+                    @endcan
                 </div>
             </div>
             

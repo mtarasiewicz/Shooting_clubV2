@@ -27,6 +27,9 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'legends.manage']);
         Permission::create(['name' => 'legends.index']);
 
+        Permission::create(['name' => 'competitions.manage']);
+        Permission::create(['name' => 'competitions.index']);
+
         $adminRole = Role::findByName(config('auth.roles.admin'));
         $adminRole->givePermissionTo('users.index');
         $adminRole->givePermissionTo('users.store');
@@ -34,6 +37,8 @@ class PermissionSeeder extends Seeder
         $adminRole->givePermissionTo('users.change_role');
         $adminRole->givePermissionTo('tournaments.index');
         $adminRole->givePermissionTo('tournaments.manage');
+        $adminRole->givePermissionTo('competitions.index');
+        $adminRole->givePermissionTo('competitions.manage');
 
         $adminRole->givePermissionTo('legends.index');
         $adminRole->givePermissionTo('legends.manage');

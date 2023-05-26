@@ -12,6 +12,7 @@ class CompetitionController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Competition::class); 
         return view('competitions.index');
     }
 
@@ -20,7 +21,10 @@ class CompetitionController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Competition::class);
+        return view(
+            'competitions.form'
+        );
     }
 
     /**
@@ -44,7 +48,13 @@ class CompetitionController extends Controller
      */
     public function edit(Competition $competition)
     {
-        //
+        $this->authorize('viewAny', Competition::class); 
+        return view(
+            'competitions.form',
+            [
+                'competition' => $competition
+            ]
+        );
     }
 
     /**

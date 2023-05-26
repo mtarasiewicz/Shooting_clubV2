@@ -14,6 +14,8 @@ return [
             'restore_title' => 'Przywrócono',
             'destroy_description' => 'Usuwanie powiodło się',
             'restore_description' => 'Przywracanie powiodło się',
+            'updated' => 'Zmiany zostały zapisane',
+            'stored' => 'Pomyślnie utworzono nową pozycję'
         ]
     ],
     'dialogs' => [

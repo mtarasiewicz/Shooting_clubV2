@@ -22,6 +22,7 @@
                     <x-button primary label="{{ __('Dodaj Pozycję Legendy')}}" 
                     href="{{ route('legends.create')}}" class="justify-self-end"  />
                 @endcan
+                <div class="grid justify-items-stretch pt-2 pr-2">
                 </div>
             </div>
         </div>
