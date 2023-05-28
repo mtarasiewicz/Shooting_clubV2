@@ -4,15 +4,18 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Competition;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tournament extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    const TEST = 'brak';
     protected $fillable = [
         'name',
         'date',
@@ -34,5 +37,30 @@ class Tournament extends Model
     public function participants()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function pdfUrl() : string
+    {
+        return $this-> pdfExists() 
+        ? Storage::url($this->rules)
+        : Storage::url(self::TEST);
+    }
+
+    protected function pdf() : Attribute
+    {
+        return Attribute::make(
+            get: function ($value){
+                if ($value === null)
+                {
+                    return null;
+                }
+                return config('filesystems.pdf_dir') . '/' . $value;
+            },
+        );
+    }
+    public function pdfExists() : bool
+    {
+        return $this->rules !== null
+        && Storage::disk('public')->exists($this->rules);
     }
 }

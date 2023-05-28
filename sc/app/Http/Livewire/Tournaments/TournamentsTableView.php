@@ -10,10 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Http\Livewire\Traits\SoftDelete;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Livewire\Tournaments\Actions\EditTournamentAction;
+use App\Http\Livewire\Tournaments\Actions\ViewCompetitionsAction;
 use App\Http\Livewire\Tournaments\Actions\ViewParticipantsAction;
+use App\Http\Livewire\Tournaments\Actions\DownloadRulesAction;
 use App\Http\Livewire\Tournaments\Actions\RestoreTournamentAction;
 use App\Http\Livewire\Tournaments\Actions\SoftDeleteTournamentAction;
-use App\Http\Livewire\Tournaments\Actions\ViewCompetitionsAction;
 
 class TournamentsTableView extends TableView
 {
@@ -80,11 +81,12 @@ class TournamentsTableView extends TableView
     protected function actionsByRow()
     {
         return [
+            new DownloadRulesAction('tournamentDownload','test'),
             new EditTournamentAction('tournaments.edit', __('translation.actions.edit')),
             new SoftDeleteTournamentAction(),
             new RestoreTournamentAction(),
             new ViewParticipantsAction('participants', __('translation.actions.participants')),
-            new ViewCompetitionsAction('tournamentCompetitions', __('translation.actions.competitions'))
+            new ViewCompetitionsAction('tournamentCompetitions', __('translation.actions.competitions')),
         ];
     }
 
