@@ -6,13 +6,20 @@ use Livewire\Component;
 use App\Models\Tournament;
 use WireUi\Traits\Actions;
 use Illuminate\Support\Str;
+use Livewire\WithFileUploads;
 
 class TournamentForm extends Component
 {
     use Actions;
+    use WithFileUploads;
 
     public Tournament $tournament;
     public bool $editMode;
+    public $rules;
+
+    public $rulesUrl;
+    public $ruleExists;
+    
 
     public function rules()
     {
@@ -36,14 +43,15 @@ class TournamentForm extends Component
                 'required',
                 'string',
             ],
-            // 'tournament.participants'=>[
-            //     'required',
-            //     'string',
-            // ],
             'tournament.description'=>[
                 'required',
                 'string',
             ],
+            'rules' => [
+                'nullable',
+                'mimes:pdf',
+                'max:2048',
+            ]
         ];
     }
     public function validationAttributes()
@@ -55,6 +63,7 @@ class TournamentForm extends Component
             'competitions'=> Str::lower(__('tournaments.attributes.competitions')),
             //'participants'=> Str::lower(__('tournaments.attributes.participants')),
             'description'=> Str::lower(__('tournaments.attributes.description')),
+            'rules' => Str::lower(__('tournaments.attributes.rules'))
         ];
     }
     public function mount(Tournament $tournament, Bool $editMode)
@@ -73,7 +82,15 @@ class TournamentForm extends Component
     public function save()
     {
         $this->validate();
+        $rules = $this->rules;
+        $tournament = $this->tournament;
         $this->tournament->save();
+        if ($rules !== null)
+        {
+            $tournament->rules = $tournament->id . '.' . $this->rules->getClientOriginalExtension();
+            $tournament->save();
+            $this->rules->storeAs('', $this->tournament->rules, 'public');
+        }
         $this->notification()->success(
             $title=$this->editMode
             ? __('translation.messages.successes.updated_title')
