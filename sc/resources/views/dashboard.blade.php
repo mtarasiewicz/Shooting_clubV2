@@ -24,8 +24,34 @@
     <script src="jsfile/dashboardScript.js" defer></script>  
 </head>
   <body>
+    <div class="slideshow-container">
 
+      <div class="mySlides fade">
+        <img src="images/photo_shooting1.jpg" style="width:100%">
+        {{-- <div class="text">Caption Text</div> --}}
+      </div>
+      
+      <div class="mySlides fade">
+        <img src="images/photo_shooting2.jpg" style="width:100%">
 
+      </div>
+      
+      <div class="mySlides fade">
+        <img src="images/photo_shooting3.jpg" style="width:100%">
+
+      </div>
+      
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+      
+      </div>
+      <br>
+      
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+      </div>
     <div class="heading">
         <h1>O nas</h1>
         <p>Klub Strzelecki "Łowcy Celu" został założony w 1995 roku przez grupę pasjonatów strzelectwa z Kalisza. 
@@ -60,7 +86,23 @@
             </div>
         </section>
     </div>
-    
+    <div class="trening">
+      <h1>Trening strzelecki</h1>
+      <p>
+        Z wielką przyjemnością zapraszamy Was na nasz nadchodzący trening strzelecki, który odbędzie się dnia 25.08.2023 w naszym ośrodku strzeleckim.
+        Ten trening jest doskonałą okazją do doskonalenia swoich umiejętności strzeleckich oraz zwiększenia wiedzy na temat bezpiecznego posługiwania się bronią palną. Bez względu na to, czy jesteście doświadczonymi strzelcami, czy dopiero rozpoczynacie swoją przygodę z tym sportem, nasza profesjonalna kadra instruktorów będzie obecna, by służyć pomocą i udzielić wszelkich niezbędnych wskazówek.
+        Podczas treningu będziecie mieli okazję korzystać z różnych rodzajów broni, takich jak karabinki, pistolety czy strzelby. Nasz ośrodek jest wyposażony w nowoczesne zaplecze oraz zapewnia pełne bezpieczeństwo podczas strzelania. Instruktorzy dostarczą Wam również potrzebne instrukcje dotyczące procedur bezpieczeństwa, aby zagwarantować, że każdy trening będzie odbywał się w kontrolowany sposób.
+        Ponadto, podczas treningu będziecie mieli okazję poznać innych pasjonatów strzelectwa i wymienić się doświadczeniami oraz poradami. To doskonała okazja do nawiązania nowych znajomości i poszerzenia swojej sieci kontaktów w środowisku strzeleckim.
+        Czekamy na Was z otwartymi ramionami i z niecierpliwością oczekujemy na Waszą obecność. 
+      </p>
+    </div>
+    <div class="ranking">
+      <h1>Ranking</h1>
+      <p>
+        Ranking najlepszych zawodników klubu strzeleckiego "Łowcy Celu" <br>
+        <a href="#" class="linkRanking">Ranking</a>
+      </p>
+    </div>
     <footer class="footer">
     <div id="page-container">
     <div id="content-wrap">
