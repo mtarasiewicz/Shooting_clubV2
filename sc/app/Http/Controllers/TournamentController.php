@@ -55,6 +55,11 @@ class TournamentController extends Controller
             'tournament' => $tournament
         ]);
     }
+    public function download(Tournament $tournament)
+    {
+        $path = public_path('storage/'. $tournament->rules);
+        return response()->download($path);
+    }
 
     public function registerParticipant(Tournament $tournament, User $participant) {
         $this->authorize('register', Tournament::class);

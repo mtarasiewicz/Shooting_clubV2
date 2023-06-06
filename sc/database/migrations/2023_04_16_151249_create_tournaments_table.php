@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('venue', 100);
             $table->string('competitions', 20);
             $table->string('description', 30)->nullable();
+            $table->string('rules')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

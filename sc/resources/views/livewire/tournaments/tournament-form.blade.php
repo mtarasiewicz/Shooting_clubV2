@@ -61,6 +61,7 @@
                 <x-input placeholder="{{ __('translation.enter') }}" wire:model="tournament.description"/>
             </div>
         </div>
+        <x-input type="file" wire:model="rules" /> 
         <hr class="my-2">
         <div class="flex jusitfy-end pt-2">
             <x-button href="{{ route('tournaments.index') }}" secondary class="mr-2" label="{{ __('translation.back') }}"/>

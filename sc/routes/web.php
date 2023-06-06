@@ -45,6 +45,10 @@ Route::resource('competitions', CompetitionController::class)->only([
     'index','create','edit'
 ]);
 
+Route::get('tournaments/{tournament}/competitions', [TournamentController::class, 'competitions'])->name('tournamentCompetitions');
+Route::get('tournaments/{tournament}/download', [TournamentController::class, 'download'])->name('tournamentDownload');
+
+
 Route::resource('tournaments', TournamentController::class)->only([
     'index','create','edit'
 ]);
