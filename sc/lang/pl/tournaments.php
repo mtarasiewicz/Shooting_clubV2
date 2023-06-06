@@ -8,6 +8,7 @@ return [
         'competitions' => 'Konkurencje',
         'participants' => 'Uczestnicy',
         'description' => 'Opis',
+        'competition' => 'Konkurencja',
     ],
     'labels' => [
         'create_form_title' => 'Tworzenie zawodów',

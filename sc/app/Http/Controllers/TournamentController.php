@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Competition;
+use App\Models\CompetitionTournament;
 use App\Models\User;
 use App\Models\Tournament;
 use Illuminate\Support\Facades\DB;
@@ -37,6 +39,12 @@ class TournamentController extends Controller
     public function competitions(Tournament $tournament)
     {
         return view('tournaments.competitions', [
+            'tournament' => $tournament
+        ]);
+    }
+
+    public function addCompetition(Tournament $tournament) {
+        return view('tournaments.competition-form', [
             'tournament' => $tournament
         ]);
     }

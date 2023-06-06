@@ -2,22 +2,27 @@
 
 namespace App\Http\Livewire\Tournaments;
 
+use App\Models\Tournament;
+use WireUi\Traits\Actions;
 use App\Models\Competition;
 use LaravelViews\Views\TableView;
 use Illuminate\Database\Eloquent\Builder;
+use App\Http\Livewire\Tournaments\Actions\RemoveCompetitionAction;
+use App\Models\CompetitionTournament;
 
 class CompetitionsTableView extends TableView
 {
+    use Actions;
     public $tournament;
 
-        /**
+    /**
      * Sets a initial query with the data to fill the table
      *
      * @return Builder Eloquent query
      */
     public function repository(): Builder
     {
-        return $this->tournament->competitions()->get()->toQuery();
+        return CompetitionTournament::where('tournament_id', $this->tournament->id)->get()->toQuery();
     }
 
     public $searchBy = [
@@ -43,11 +48,19 @@ class CompetitionsTableView extends TableView
      *
      * @param $model Current model for each row
      */
-    public function row(Competition $competition): array
+    public function row(CompetitionTournament $competitionTournament): array
+    {
+        // dd($competitionTournament->competition);
+        return [
+            $competitionTournament->competition->name,
+            $competitionTournament->competition->description,
+        ];
+    }
+
+    protected function actionsByRow()
     {
         return [
-            $competition->name,
-            $competition->description
+            new RemoveCompetitionAction()
         ];
     }
 }

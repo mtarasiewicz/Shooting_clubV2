@@ -9,6 +9,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <livewire:tournaments.competitions-table-view :tournament="$tournament"/>
                 <x-button style="margin-bottom:7px; margin-left:7px; margin-top:-7px" href="{{ route('tournaments.index') }}" secondary label="{{ __('translation.back') }}"/>
+                <x-button style="margin-bottom:7px; margin-left:7px; margin-top:-7px" href="{{ route('addTournamentCompetition', ['tournament' => $tournament]) }}" primary label="{{ __('translation.add') }}"/>
             </div>
         </div>
     </div>

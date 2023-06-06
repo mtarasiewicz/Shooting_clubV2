@@ -87,4 +87,5 @@ return [
         'participants' => 'Zawodnicy',
         'competitions' => 'Konkurencje',
     ],
+    'add' => 'Dodaj',
 ];

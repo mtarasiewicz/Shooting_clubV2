@@ -45,11 +45,13 @@ Route::resource('competitions', CompetitionController::class)->only([
     'index','create','edit'
 ]);
 
-Route::get('tournaments/{tournament}/competitions', [TournamentController::class, 'competitions'])->name('tournamentCompetitions');
-
 Route::resource('tournaments', TournamentController::class)->only([
     'index','create','edit'
 ]);
+
+Route::get('tournaments/{tournament}/competitions', [TournamentController::class, 'competitions'])->name('tournamentCompetitions');
+Route::get('tournaments/{tournament}/competitions/add', [TournamentController::class, 'addCompetition'])->name('addTournamentCompetition');
+Route::get('tournaments/{tournament}/competitions/remove/{competition}', [TournamentController::class, 'removeCompetition'])->name('removeTournamentCompetition');
 
 Route::get('tournaments/{tournament}/participants', [TournamentController::class, 'participants'])->name('participants');
 Route::get('tournaments/{tournament}/participants/register/{participant}', [TournamentController::class, 'registerParticipant'])->name('registerParticipant');

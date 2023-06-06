@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Competition;
+use App\Models\CompetitionTournament;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,5 +35,10 @@ class Tournament extends Model
     public function participants()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function competitionTournament()
+    {
+        return $this->belongsTo(CompetitionTournament::class);
     }
 }

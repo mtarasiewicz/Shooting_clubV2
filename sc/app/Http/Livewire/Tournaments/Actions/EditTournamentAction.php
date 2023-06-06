@@ -7,6 +7,7 @@ use LaravelViews\Actions\RedirectAction;
 
 class EditTournamentAction extends RedirectAction
 {
+
     public function __construct(string $to, string $title, string $icon = 'edit')
     {
         parent::__construct($to, $title, $icon);
