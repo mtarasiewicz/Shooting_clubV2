@@ -17,6 +17,7 @@ class ParticipantsTableView extends TableView
      */
     public function repository(): Builder
     {
+    
         return $this->tournament->participants()->get()->toQuery();
     }
 
