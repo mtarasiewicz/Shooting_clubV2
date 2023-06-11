@@ -1,5 +1,5 @@
-name;description
-Strzelanie z broni małokalibrowej;miejsce na opis konkurencji
-Strzelanie z broni pneumatycznej;miejsce na opis konkurencji
-Strzelanie z broni o centralnym zapłonie;miejsce na opis konkurencji
-Rzucanie rzutkami;miejsce na opis konkurencji
+name;shortcut;description
+Strzelanie z broni małokalibrowej;Mk;miejsce na opis konkurencji
+Strzelanie z broni pneumatycznej;Pn;miejsce na opis konkurencji
+Strzelanie z broni o centralnym zapłonie;Cz;miejsce na opis konkurencji
+Rzucanie rzutkami;Rz;miejsce na opis konkurencji

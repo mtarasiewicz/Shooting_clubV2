@@ -18,7 +18,16 @@
             </div>
         </div>
         <hr class="my-2">
+        <div class="grid grid-cols-2 gap-2">
+            <div class="">
+                <label form="shortcut">{{ __('Skrót')}} </label>
+            </div>
 
+            <div class="">
+                <x-input placeholder="{{ __('Wprowadź skrót')}}" wire:model="competition.shortcut" />
+            </div>
+        </div>
+        <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
             <div class="">
                 <label form="description">{{ __('Opis konkurencji')}} </label>

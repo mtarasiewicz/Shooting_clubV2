@@ -3,6 +3,7 @@
 return [
     'attributes' => [
         'name' => 'Nazwa',
+        'shortcut' => 'Skrót',
         'description' => 'Opis',
     ],
 

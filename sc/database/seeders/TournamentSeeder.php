@@ -24,8 +24,7 @@ class TournamentSeeder extends Seeder
                         'date' => $data[0],
                         'name' => $data[1],
                         'venue' => $data[2],
-                        'competitions' => $data[3],
-                        'description' => $data[4]
+                        'description' => $data[3]
                     ]);
             }
             $firstLine = false;

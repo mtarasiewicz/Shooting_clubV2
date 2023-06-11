@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('date', 10);
             $table->string('venue', 100);
-            $table->string('competitions', 20);
             $table->string('description', 30)->nullable();
             $table->string('rules')->nullable();
             $table->timestamps();

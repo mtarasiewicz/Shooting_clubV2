@@ -15,6 +15,7 @@ use App\Http\Livewire\Tournaments\Actions\ViewParticipantsAction;
 use App\Http\Livewire\Tournaments\Actions\DownloadRulesAction;
 use App\Http\Livewire\Tournaments\Actions\RestoreTournamentAction;
 use App\Http\Livewire\Tournaments\Actions\SoftDeleteTournamentAction;
+use App\Models\Competition;
 
 class TournamentsTableView extends TableView
 {
@@ -30,7 +31,6 @@ class TournamentsTableView extends TableView
         'date',
         'name',
         'venue',
-        'competitions',
         'description'
     ];
 
@@ -58,7 +58,7 @@ class TournamentsTableView extends TableView
             __('tournaments.attributes.name'),
             __('tournaments.attributes.venue'),
             __('tournaments.attributes.competitions'),
-            __('tournaments.attributes.description'),
+            __('tournaments.attributes.participants'),
         ];
     }
 
@@ -73,7 +73,7 @@ class TournamentsTableView extends TableView
             $model->date,
             $model->name,
             $model->venue,
-            $model->competitions,
+            $model->competitions->pluck('shortcut')->implode(' '),
             $model->description,
         ];
     }
@@ -82,11 +82,11 @@ class TournamentsTableView extends TableView
     {
         return [
             new DownloadRulesAction('tournamentDownload','test'),
+            new ViewCompetitionsAction('tournamentCompetitions', __('translation.actions.competitions')),
+            new ViewParticipantsAction('participants', __('translation.actions.participants')),
             new EditTournamentAction('tournaments.edit', __('translation.actions.edit')),
             new SoftDeleteTournamentAction(),
             new RestoreTournamentAction(),
-            new ViewParticipantsAction('participants', __('translation.actions.participants')),
-            new ViewCompetitionsAction('tournamentCompetitions', __('translation.actions.competitions')),
         ];
     }
 

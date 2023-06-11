@@ -7,7 +7,7 @@ use LaravelViews\Actions\RedirectAction;
 
 class ViewParticipantsAction extends RedirectAction
 {
-    public function __construct(string $to, string $title, string $icon = 'arrow-right')
+    public function __construct(string $to, string $title, string $icon = 'users')
     {
         parent::__construct($to, $title, $icon);
     }

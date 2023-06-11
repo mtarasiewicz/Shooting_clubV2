@@ -21,7 +21,8 @@ class CompetitionSeeder extends Seeder
                 Competition::create(
                     [
                         'name' => $data[0],
-                        'description' => $data[1]
+                        'shortcut' => $data[1],
+                        'description' => $data[2]
                     ]);
             }
             $firstLine = false;

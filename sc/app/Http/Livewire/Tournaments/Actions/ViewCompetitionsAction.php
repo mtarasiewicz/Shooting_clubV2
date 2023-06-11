@@ -7,7 +7,7 @@ use LaravelViews\Actions\RedirectAction;
 
 class ViewCompetitionsAction extends RedirectAction
 {
-    public function __construct(string $to, string $title, string $icon = 'arrow-right')
+    public function __construct(string $to, string $title, string $icon = 'target')
     {
         parent::__construct($to, $title, $icon);
     }

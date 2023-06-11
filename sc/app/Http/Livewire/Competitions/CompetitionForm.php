@@ -24,6 +24,10 @@ public function rules()
             'unique:competitions,name'.
                 ($this->editMode ? (',' . $this->competition->id):''),
         ],
+        'competition.shortcut'=>[
+            'required',
+            'string',
+        ],
         'competition.description'=>[
             'required',
             'string',
@@ -34,6 +38,7 @@ public function validationAttributes()
 {
     return [
         'name'=> Str::lower(__('competitions.attributes.name')),
+        'shortcut'=> Str::lower(__('competitions.attributes.shortcut')),
         'description'=> Str::lower(__('competitions.attributes.description')),
     ];
 }

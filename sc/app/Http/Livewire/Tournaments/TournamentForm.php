@@ -39,10 +39,10 @@ class TournamentForm extends Component
                 'required',
                 'string',
             ],
-            'tournament.competitions'=>[
-                'required',
-                'string',
-            ],
+            // 'tournament.competitions'=>[
+            //     'required',
+            //     'string',
+            // ],
             'tournament.description'=>[
                 'required',
                 'string',
@@ -60,8 +60,7 @@ class TournamentForm extends Component
             'name'=> Str::lower(__('tournaments.attributes.name')),
             'date'=> Str::lower(__('tournaments.attributes.date')),
             'venue'=> Str::lower(__('tournaments.attributes.venue')),
-            'competitions'=> Str::lower(__('tournaments.attributes.competitions')),
-            //'participants'=> Str::lower(__('tournaments.attributes.participants')),
+            // 'competitions'=> Str::lower(__('tournaments.attributes.competitions')),
             'description'=> Str::lower(__('tournaments.attributes.description')),
             'rules' => Str::lower(__('tournaments.attributes.rules'))
         ];

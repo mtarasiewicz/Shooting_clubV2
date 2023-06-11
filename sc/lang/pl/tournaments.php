@@ -6,7 +6,7 @@ return [
         'date' => 'Data',
         'venue' => 'Miejsce',
         'competitions' => 'Konkurencje',
-        'participants' => 'Uczestnicy',
+        'participants' => 'Zawodnicy',
         'description' => 'Opis',
         'competition' => 'Konkurencja',
     ],

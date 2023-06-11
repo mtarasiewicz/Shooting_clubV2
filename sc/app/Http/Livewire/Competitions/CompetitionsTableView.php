@@ -25,6 +25,7 @@ class CompetitionsTableView extends TableView
 
     public $searchBy = [
         'name',
+        'shortcut',
         'description'
     ];
 
@@ -47,6 +48,7 @@ class CompetitionsTableView extends TableView
     {
         return [
             __('competitions.attributes.name'),
+            __('competitions.attributes.shortcut'),
             __('competitions.attributes.description'),
         ];
     }
@@ -60,6 +62,7 @@ class CompetitionsTableView extends TableView
     {
         return [
             $model->name,
+            $model->shortcut,
             $model->description,
         ];
     }

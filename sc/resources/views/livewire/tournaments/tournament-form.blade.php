@@ -34,7 +34,7 @@
                 <x-input placeholder="{{ __('translation.enter') }}" wire:model="tournament.venue"/>
             </div>
         </div>
-        <hr class="my-2">
+        <!-- <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
             <div class="">
                 <label for="competitions">{{ __('tournaments.attributes.competitions') }}</label>
@@ -42,20 +42,11 @@
             <div class="">
                 <x-input placeholder="{{ __('translation.enter') }}" wire:model="tournament.competitions"/>
             </div>
-        </div>
-        {{-- <hr class="my-2">
-        <div class="grid grid-cols-2 gap-2">
-            <div class="">
-                <label for="participants">{{ __('tournaments.attributes.participants') }}</label>
-            </div>
-            <div class="">
-                <x-input placeholder="{{ __('translation.enter') }}" wire:model="tournament.participants"/>
-            </div>
-        </div> --}}
+        </div> -->
         <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
             <div class="">
-                <label for="description">{{ __('tournaments.attributes.description') }}</label>
+                <label for="description">{{ __('tournaments.attributes.participants') }}</label>
             </div>
             <div class="">
                 <x-input placeholder="{{ __('translation.enter') }}" wire:model="tournament.description"/>
