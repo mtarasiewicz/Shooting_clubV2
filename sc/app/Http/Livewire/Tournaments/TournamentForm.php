@@ -7,6 +7,7 @@ use App\Models\Tournament;
 use WireUi\Traits\Actions;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class TournamentForm extends Component
 {
@@ -18,7 +19,9 @@ class TournamentForm extends Component
     public $rules;
 
     public $rulesUrl;
-    public $ruleExists;
+    public bool $ruleExists;
+    
+    
     
 
     public function rules()
@@ -69,6 +72,15 @@ class TournamentForm extends Component
     {
         $this->tournament = $tournament;
         $this->editMode = $editMode;
+        if ($this->tournament->rules == null)
+        {
+            $this->ruleExists = false;
+        }
+        else
+        {
+            $this->ruleExists = true;
+        }
+        
     }
     public function render()
     {
@@ -89,6 +101,8 @@ class TournamentForm extends Component
             $tournament->rules = $tournament->id . '.' . $this->rules->getClientOriginalExtension();
             $tournament->save();
             $this->rules->storeAs('', $this->tournament->rules, 'public');
+            $this->ruleExists = true;
+        
         }
         $this->notification()->success(
             $title=$this->editMode
@@ -99,5 +113,18 @@ class TournamentForm extends Component
             : __('tournaments.messages.successes.stored',['name' => $this->tournament->name])
         );
         $this->editMode = true;
+        
     }
+
+    public function rulesDelete()
+    {
+        if (!is_null($this->tournament->rules) && Storage::disk('public')->delete($this->tournament->rules))
+        {
+            $this->tournament->rules = null;
+            $this->tournament->save();  
+            $this->ruleExists = false;       
+        }
+    }
+
+
 }

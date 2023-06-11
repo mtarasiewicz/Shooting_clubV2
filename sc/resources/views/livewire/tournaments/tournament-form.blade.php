@@ -52,7 +52,23 @@
                 <x-input placeholder="{{ __('translation.enter') }}" wire:model="tournament.description"/>
             </div>
         </div>
-        <x-input type="file" wire:model="rules" /> 
+        @if($ruleExists)
+        <hr class="my-2">
+        <div class="grid grid-cols-2 gap-2">
+            <div class="">
+                <label for="rules">{{ __('Regulamin') }}</label>
+            </div>
+            <x-button label="Usuń regulamin" icon="trash" wire:click="rulesDelete"/>
+        </div>
+        @else
+        <hr class="my-2">
+        <div class="grid grid-cols-2 gap-2">
+            <div class="">
+                <label for="rules">{{ __('Regulamin') }}</label>
+            </div>
+        <x-input type="file" wire:model="rules"/>
+        </div>
+        @endif
         <hr class="my-2">
         <div class="flex jusitfy-end pt-2">
             <x-button href="{{ route('tournaments.index') }}" secondary class="mr-2" label="{{ __('translation.back') }}"/>
