@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Competition;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class CompetitionController extends Controller
 {
@@ -71,5 +72,31 @@ class CompetitionController extends Controller
     public function destroy(Competition $competition)
     {
         //
+    }
+
+    public function async(Request $request)
+    {
+        $this->authorize('viewAny', Competition::class);
+        return Competition::query()
+            ->select('id', 'name')
+            ->orderBy('name')
+            ->when(
+                $request->search,
+                fn (Builder $query) 
+                    => $query->where('name', 'like', "%{$request->search}%")
+            )->when(
+                $request->exists('selected'),
+                fn (Builder $query) => $query->whereIn(
+                    'id',
+                    array_map(
+                        fn (array $item) => $item['id'],
+                        array_filter(
+                            $request->selected,
+                            fn ($item) => (is_array($item) && isset($item['id']))
+                        )
+                    )
+                ),
+                fn (Builder $query) => $query->limit(Competition::count())
+            )->get();
     }
 }

@@ -34,15 +34,18 @@
                 <x-input placeholder="{{ __('translation.enter') }}" wire:model="tournament.venue"/>
             </div>
         </div>
-        <!-- <hr class="my-2">
+        <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
             <div class="">
-                <label for="competitions">{{ __('tournaments.attributes.competitions') }}</label>
+                <label for="competitions">
+                    {{ __('tournaments.attributes.competitions') }}
+                </label>
             </div>
             <div class="">
-                <x-input placeholder="{{ __('translation.enter') }}" wire:model="tournament.competitions"/>
+                <x-select multiselect placeholder="{{ __('translation.select') }}" wire:model.defer="tournament.competitions"
+                    :async-data="route('async.competitions')" option-label="name" option-value="id" />
             </div>
-        </div> -->
+        </div>
         <hr class="my-2">
         <div class="grid grid-cols-2 gap-2">
             <div class="">

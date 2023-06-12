@@ -45,6 +45,9 @@ Route::resource('competitions', CompetitionController::class)->only([
     'index','create','edit'
 ]);
 
+Route::get('async/competitions', [CompetitionController::class, 'async'])
+    ->name('async.competitions');
+
 Route::get('tournaments/{tournament}/competitions', [TournamentController::class, 'competitions'])->name('tournamentCompetitions');
 Route::get('tournaments/{tournament}/download', [TournamentController::class, 'download'])->name('tournamentDownload');
 

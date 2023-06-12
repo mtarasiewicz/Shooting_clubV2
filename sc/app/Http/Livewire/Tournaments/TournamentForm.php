@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Tournaments;
 
 use Livewire\Component;
 use App\Models\Tournament;
+use Illuminate\Support\Facades\DB;
 use WireUi\Traits\Actions;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
@@ -20,9 +21,6 @@ class TournamentForm extends Component
 
     public $rulesUrl;
     public bool $ruleExists;
-    
-    
-    
 
     public function rules()
     {
@@ -42,10 +40,10 @@ class TournamentForm extends Component
                 'required',
                 'string',
             ],
-            // 'tournament.competitions'=>[
-            //     'required',
-            //     'string',
-            // ],
+            'tournament.competitions'=>[
+                'required',
+                'array',
+            ],
             'tournament.description'=>[
                 'required',
                 'string',
@@ -63,7 +61,7 @@ class TournamentForm extends Component
             'name'=> Str::lower(__('tournaments.attributes.name')),
             'date'=> Str::lower(__('tournaments.attributes.date')),
             'venue'=> Str::lower(__('tournaments.attributes.venue')),
-            // 'competitions'=> Str::lower(__('tournaments.attributes.competitions')),
+            'competitions'=> Str::lower(__('tournaments.attributes.competitions')),
             'description'=> Str::lower(__('tournaments.attributes.description')),
             'rules' => Str::lower(__('tournaments.attributes.rules'))
         ];
@@ -71,6 +69,7 @@ class TournamentForm extends Component
     public function mount(Tournament $tournament, Bool $editMode)
     {
         $this->tournament = $tournament;
+        $this->tournament->load('competitions');
         $this->editMode = $editMode;
         if ($this->tournament->rules == null)
         {
@@ -94,7 +93,16 @@ class TournamentForm extends Component
     {
         $this->validate();
         $rules = $this->rules;
+        $competitionsIds = $this->tournament->competitions;
+        unset($this->tournament->competitions);
+    
         $tournament = $this->tournament;
+        DB::transaction(function() use ($tournament, $competitionsIds) {
+            $tournament->save();
+            // dd($tournament->competitions()->sync($competitionsIds));
+            $tournament->competitions()->sync($competitionsIds);
+        });
+
         $this->tournament->save();
         if ($rules !== null)
         {
@@ -113,7 +121,7 @@ class TournamentForm extends Component
             : __('tournaments.messages.successes.stored',['name' => $this->tournament->name])
         );
         $this->editMode = true;
-        
+        $this->tournament->load('competitions');
     }
 
     public function rulesDelete()
