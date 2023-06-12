@@ -65,6 +65,25 @@ Route::resource('legends', LegendController::class)->only([
     'index', 'create', 'edit'
 ]);
 
+Route::get('/about-us', function () {
+    return view('footer/about-us');
+});
+Route::get('/privacy-policy', function () {
+    return view('footer/privacy-policy');
+});
+Route::get('/affiliate-program', function () {
+    return view('footer/affiliate-program');
+});
+Route::get('/our-services', function () {
+    return view('footer/our-services');
+});
+Route::get('/faq', function () {
+    return view('footer/faq');
+});
+Route::get('/rules', function () {
+    return view('footer/rules');
+});
+
 Route::get('logout', function ()
 {
     auth()->logout();

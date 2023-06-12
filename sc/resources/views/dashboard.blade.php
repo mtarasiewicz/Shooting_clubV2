@@ -111,17 +111,17 @@
           <div class="footer-col">
             <h4>information</h4>
             <ul>
-              <li><a href="#">about us</a></li>
-              <li><a href="#">our services</a></li>
-              <li><a href="#">privacy policy</a></li>
-              <li><a href="#">affiliate program</a></li>
+              <li><a href="/about-us">about us</a></li>
+              <li><a href="/our-services">our services</a></li>
+              <li><a href="/privacy-policy">privacy policy</a></li>
+              <li><a href="/affiliate-program">affiliate program</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>get help</h4>
             <ul>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">rules</a></li>
+              <li><a href="/faq">FAQ</a></li>
+              <li><a href="/rules">rules</a></li>
             </ul>
           </div>
           <div class="footer-col">
