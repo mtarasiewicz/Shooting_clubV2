@@ -31,19 +31,19 @@
         @endif
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Imie i nazwisko')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-4" :messages="$errors->get('name')" />
         </div>
         
         <div>
-            <x-input-label for="clubName" :value="__('clubName')" />
+            <x-input-label for="clubName" :value="__('Nazwa Klubu')" />
             <x-text-input id="clubName" name="clubName" type="text" class="mt-1 block w-full" :value="old('clubName', $user->clubName)" required autofocus autocomplete="clubName" />
             <x-input-error class="mt-4" :messages="$errors->get('clubName')" />
         </div>
         
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('Adres e-mail')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-4" :messages="$errors->get('email')" />
 
@@ -69,7 +69,7 @@
         <div class=" block w-full mt-4"> </div>
         <div class="flex items-center gap-4">
             
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Zapisz') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p
