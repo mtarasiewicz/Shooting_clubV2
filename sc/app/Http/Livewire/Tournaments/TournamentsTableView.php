@@ -81,12 +81,12 @@ class TournamentsTableView extends TableView
     protected function actionsByRow()
     {
         return [
-            new DownloadRulesAction('tournamentDownload','test'),
             new ViewCompetitionsAction('tournamentCompetitions', __('translation.actions.competitions')),
             new ViewParticipantsAction('participants', __('translation.actions.participants')),
             new EditTournamentAction('tournaments.edit', __('translation.actions.edit')),
             new SoftDeleteTournamentAction(),
             new RestoreTournamentAction(),
+            new DownloadRulesAction('tournamentDownload','Pobierz regulamin'),
         ];
     }
 
